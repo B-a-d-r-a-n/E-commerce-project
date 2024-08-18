@@ -1,0 +1,12 @@
+<div class="container my-5">
+  <div class="row g-md-3">
+    @for (category of allCategories; track $index) {
+    <div class="col-md-2">
+      <div class="category p-2 cursor-pointer">
+        <img [src]="category.image" class="w-100" alt="" />
+        <h3 class="fw-bold">{{ category.name }}</h3>
+      </div>
+    </div>
+    }
+  </div>
+</div>

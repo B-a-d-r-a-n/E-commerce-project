@@ -1,0 +1,12 @@
+<div class="container my-5">
+  <div class="row g-md-3">
+    @for (Brand of allBrands; track $index) {
+    <div class="col-md-2">
+      <div class="Brand p-2 cursor-pointer">
+        <img [src]="Brand.image" class="w-100" alt="" />
+        <h3 class="fw-bold">{{ Brand.name }}</h3>
+      </div>
+    </div>
+    }
+  </div>
+</div>
