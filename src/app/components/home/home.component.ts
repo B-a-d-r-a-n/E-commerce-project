@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
 import { Product } from '../../core/interfaces/products';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,12 @@ import { Product } from '../../core/interfaces/products';
 })
 export class HomeComponent implements OnInit {
   allProducts: Product[] = [];
-  constructor(private _ProductsService: ProductsService) {}
+  constructor(
+    private _ProductsService: ProductsService,
+    private token: AuthService
+  ) {
+    this.token.saveUserData();
+  }
   getProducts = () => {
     this._ProductsService.getProducts().subscribe({
       next: (result) => {
