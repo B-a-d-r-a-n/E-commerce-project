@@ -14,7 +14,12 @@
           >{{ product?.ratingsAverage }}</span
         >
       </div>
-      <button class="btn bg-main text-white w-100">Add to cart</button>
+      <button
+        (click)="addToCart(product?._id!)"
+        class="btn bg-main text-white w-100"
+      >
+        Add to cart
+      </button>
     </div>
   </div>
 </div>
