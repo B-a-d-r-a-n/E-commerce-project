@@ -17,6 +17,21 @@ export class AuthService {
   signin = (user: any): Observable<any> => {
     return this._HttpClient.post(baseUrl + 'api/v1/auth/signin', user);
   };
+  forgotPasswords = (email: any): Observable<any> => {
+    return this._HttpClient.post(
+      baseUrl + 'api/v1/auth/forgotPasswords',
+      email
+    );
+  };
+  verifyResetCode = (code: any): Observable<any> => {
+    return this._HttpClient.post(baseUrl + 'api/v1/auth/verifyResetCode', code);
+  };
+  resetPassword = (newPassword: any): Observable<any> => {
+    return this._HttpClient.put(
+      baseUrl + 'api/v1/auth/resetPassword',
+      newPassword
+    );
+  };
 
   saveUserData = () => {
     let token = localStorage.getItem('token');

@@ -1,0 +1,98 @@
+<!-- e3mel steps buttons 1->2->3 -->
+
+<section>
+  @if (steps==1) {
+  <div class="container my-5 w-75 m-auto">
+    <h1 class="my-3">Forgot password:</h1>
+    <form [formGroup]="forgotPassword" (ngSubmit)="submitStep1()">
+      <input
+        formControlName="email"
+        type="email"
+        class="form-control my-3"
+        placeholder="Type your email..."
+      />
+      <app-alert-error
+        [formName]="forgotPassword"
+        controlName="email"
+      ></app-alert-error>
+      <div class="d-flex justify-content-between">
+        <button
+          class="btn bg-main text-white w-100"
+          [disabled]="forgotPassword.invalid || isBtnSubmit"
+        >
+          Send @if (isBtnSubmit) {
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          }
+        </button>
+      </div>
+      <div class="alert text-danger mt-1">{{ errorMessage }}</div>
+    </form>
+  </div>
+  }@else if (steps==2) {
+  <div class="container my-5 w-75 m-auto">
+    <h1 class="my-3">Verify Reset Code:</h1>
+    <form [formGroup]="verifyResetCode" (ngSubmit)="submitStep2()">
+      <input
+        formControlName="resetCode"
+        type="text"
+        class="form-control my-3"
+        placeholder="Type your Reset Code..."
+      />
+      <app-alert-error
+        [formName]="verifyResetCode"
+        controlName="resetCode"
+      ></app-alert-error>
+      <div class="d-flex justify-content-between">
+        <button
+          class="btn bg-main text-white w-100"
+          [disabled]="verifyResetCode.invalid || isBtnSubmit"
+        >
+          Verify @if (isBtnSubmit) {
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          }
+        </button>
+      </div>
+      <div class="alert text-danger mt-1">{{ errorMessage }}</div>
+    </form>
+  </div>
+  }@else if (steps==3) {
+  <div class="container my-5 w-75 m-auto">
+    <h1 class="my-3">Reset Password:</h1>
+    <form [formGroup]="resetPassword" (ngSubmit)="submitStep3()">
+      <input
+        hidden
+        formControlName="email"
+        type="text"
+        class="form-control my-3"
+        placeholder="Type your email..."
+      />
+      <app-alert-error
+        [formName]="resetPassword"
+        controlName="email"
+      ></app-alert-error>
+      <input
+        formControlName="newPassword"
+        type="password"
+        class="form-control my-3"
+        placeholder="Type your new password..."
+      />
+
+      <app-alert-error
+        [formName]="resetPassword"
+        controlName="newPassword"
+      ></app-alert-error>
+      <div class="d-flex justify-content-between">
+        <button
+          class="btn bg-main text-white w-100"
+          [disabled]="resetPassword.invalid || isBtnSubmit"
+        >
+          Reset @if (isBtnSubmit) {
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          }
+        </button>
+      </div>
+      <div class="alert text-danger mt-1">{{ errorMessage }}</div>
+    </form>
+  </div>
+  }
+</section>

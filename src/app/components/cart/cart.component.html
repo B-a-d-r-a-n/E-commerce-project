@@ -1,1 +1,52 @@
-<p>cart works!</p>
+@if (!isLoading) { @if (cart.numOfCartItems!=0) {
+<div class="container my-5 bg-main-light p-4 rounded-4">
+  <span>Items in cart: {{ cart.numOfCartItems }}</span>
+  <h1>shop cart:</h1>
+
+  <p class="text-main">Total Cart Price : {{ cart.data.totalCartPrice }} EGP</p>
+  @for (product of cart.data.products; track $index) {
+
+  <div class="row my-2 border-bottom py-2">
+    <div class="col-md-1">
+      <img class="w-100" [src]="product.product.imageCover" alt="" />
+    </div>
+    <div class="col-md-11 d-flex justify-content-between">
+      <div>
+        <h4>{{ product.product.title }}</h4>
+        <p class="text-main"></p>
+        <button class="btn" (click)="deleteItem(product.product._id)">
+          <i class="fa-solid fa-trash-can text-main"></i> Remove
+        </button>
+      </div>
+      <div>
+        <button
+          (click)="updateQTY(product.product._id, product.count + 1)"
+          class="btn main-border"
+        >
+          +
+        </button>
+        <span class="mx-1">{{ product.count }}</span>
+        <button
+          [disabled]="product.count == 1"
+          (click)="updateQTY(product.product._id, product.count - 1)"
+          class="btn main-border"
+        >
+          -
+        </button>
+      </div>
+    </div>
+  </div>
+
+  }
+  <button
+    [routerLink]="['/address', cart.cartId]"
+    class="bg-main text-white btn"
+  >
+    Place order
+  </button>
+</div>
+}@else {
+<h2 class="text-main my-5 text-center">Cart is Empty......</h2>
+} }@else {
+<h2 class="text-main my-5 text-center">Loading......</h2>
+}

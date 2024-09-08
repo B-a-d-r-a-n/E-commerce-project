@@ -12,6 +12,9 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { authGuard } from './core/guards/auth.guard';
 import { isLoggedInGuard } from './core/guards/is-logged-in.guard';
+import { ForgotComponent } from './components/forgot/forgot.component';
+import { DetailsComponent } from './components/details/details.component';
+import { AddressComponent } from './components/address/address.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +25,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'signin', pathMatch: 'full' },
       { path: 'signin', component: SigninComponent, title: 'Signin' },
       { path: 'signup', component: SignupComponent, title: 'Signup' },
+      { path: 'forgot', component: ForgotComponent, title: 'Forgot' },
     ],
   },
   {
@@ -44,6 +48,8 @@ export const routes: Routes = [
       { path: 'products', component: ProductsComponent, title: 'Products' },
       { path: 'cart', component: CartComponent, title: 'Cart' },
       { path: 'orders', component: OrdersComponent, title: 'Orders' },
+      { path: 'details/:id', component: DetailsComponent, title: 'Details' },
+      { path: 'address/:id', component: AddressComponent, title: 'Shipping' },
     ],
   },
   { path: '**', component: NotFoundComponent, title: 'NotFound' },

@@ -1,0 +1,10 @@
+<h2 class="my-2">Shop Popular Categories</h2>
+<owl-carousel-o [options]="customOptions">
+  @for (slide of categories ; track $index) {
+
+  <ng-template carouselSlide [id]="slide._id">
+    <img style="height: 300px" [src]="slide.image" [alt]="slide.slug" />
+    <h5>{{ slide.name }}</h5>
+  </ng-template>
+  }
+</owl-carousel-o>
