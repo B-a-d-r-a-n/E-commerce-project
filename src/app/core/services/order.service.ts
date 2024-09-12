@@ -16,12 +16,7 @@ export class OrderService {
     return this._HttpClient.post(
       baseUrl +
         `api/v1/orders/checkout-session/${cartId}?url=http://localhost:4200`,
-      { shippingAddress },
-      {
-        headers: {
-          token: localStorage.getItem('token')!,
-        },
-      }
+      { shippingAddress }
     );
   };
 }

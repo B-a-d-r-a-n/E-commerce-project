@@ -1,7 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { AlertErrorComponent } from '../../shared/ui/alert-error/alert-error.component';
 import { signupValidators } from '../../shared/validators/register.validators';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -23,7 +28,7 @@ export class SigninComponent {
 
   login: FormGroup = this._FormBuilder.group({
     email: [null, signupValidators.email],
-    password: [null, signupValidators.password],
+    password: [null, Validators.required],
   });
 
   sendData() {

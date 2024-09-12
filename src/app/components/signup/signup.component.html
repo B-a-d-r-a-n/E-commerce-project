@@ -1,71 +1,76 @@
-<div class="container my-5 w-75 m-auto">
-  <h1>Register now:</h1>
-  <form [formGroup]="register" (ngSubmit)="sendData()">
-    <input
-      [ngClass]="{
+<div class="vh-100 d-flex align-items-center">
+  <div class="container">
+    <h1>Register now:</h1>
+    <form [formGroup]="register" (ngSubmit)="sendData()">
+      <input
+        [ngClass]="{
         'is-valid': !register.get('name')?.errors && (register.get('name')?.touched|| register.get('name')?.dirty),
         'is-invalid': register.get('name')?.errors && (register.get('name')?.touched|| register.get('name')?.dirty),
     }
     "
-      formControlName="name"
-      type="text"
-      class="form-control my-3"
-      placeholder="Type your name..."
-    />
-    <app-alert-error [formName]="register" controlName="name"></app-alert-error>
-    <input
-      [ngClass]="{
+        formControlName="name"
+        type="text"
+        class="form-control my-3"
+        placeholder="Type your name..."
+      />
+      <app-alert-error
+        [formName]="register"
+        controlName="name"
+      ></app-alert-error>
+      <input
+        [ngClass]="{
         'is-valid': !register.get('email')?.errors && (register.get('email')?.touched|| register.get('email')?.dirty),
         'is-invalid': register.get('email')?.errors && (register.get('email')?.touched|| register.get('email')?.dirty),
     }
     "
-      formControlName="email"
-      type="email"
-      class="form-control my-3"
-      placeholder="Type your email..."
-    />
-    <app-alert-error
-      [formName]="register"
-      controlName="email"
-    ></app-alert-error>
-    <input
-      [ngClass]="{
+        formControlName="email"
+        type="email"
+        class="form-control my-3"
+        placeholder="Type your email..."
+      />
+      <app-alert-error
+        [formName]="register"
+        controlName="email"
+      ></app-alert-error>
+      <input
+        [ngClass]="{
         'is-valid': !register.get('password')?.errors && (register.get('password')?.touched|| register.get('password')?.dirty),
         'is-invalid': register.get('password')?.errors && (register.get('password')?.touched|| register.get('password')?.dirty),
     }
     "
-      formControlName="password"
-      type="password"
-      class="form-control my-3"
-      placeholder="Type your password..."
-    />
-    <app-alert-error
-      [formName]="register"
-      controlName="password"
-    ></app-alert-error>
-    <input
-      [ngClass]="{
+        formControlName="password"
+        type="password"
+        class="form-control my-3"
+        placeholder="Type your password..."
+      />
+      <app-alert-error
+        [formName]="register"
+        controlName="password"
+      ></app-alert-error>
+      <input
+        [ngClass]="{
         'is-valid': !(register.get('rePassword')?.errors||register.getError('mismatch')) && (register.get('rePassword')?.touched|| register.get('rePassword')?.dirty),
         'is-invalid': (register.get('rePassword')?.errors||register.getError('mismatch') )&& (register.get('rePassword')?.touched|| register.get('rePassword')?.dirty),
     }
     "
-      formControlName="rePassword"
-      type="password"
-      class="form-control my-3"
-      placeholder="Type your password again..."
-    />
-    <app-alert-error
-      [formName]="register"
-      controlName="rePassword"
-    ></app-alert-error>
-    <button
-      class="btn bg-main text-white w-100"
-      [disabled]="register.invalid || isBtnSubmit"
-    >
-      Register @if (isBtnSubmit) {
-      <i class="fa-solid fa-spinner fa-spin"></i>
-      }
-    </button>
-    <div class="alert text-danger mt-1">{{ errorMessage }}</div>
-  </form>
+        formControlName="rePassword"
+        type="password"
+        class="form-control my-3"
+        placeholder="Type your password again..."
+      />
+      <app-alert-error
+        [formName]="register"
+        controlName="rePassword"
+      ></app-alert-error>
+      <button
+        class="btn bg-main text-white w-100"
+        [disabled]="register.invalid || isBtnSubmit"
+      >
+        Register @if (isBtnSubmit) {
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        }
+      </button>
+      <div class="alert text-danger mt-1">{{ errorMessage }}</div>
+    </form>
+  </div>
 </div>

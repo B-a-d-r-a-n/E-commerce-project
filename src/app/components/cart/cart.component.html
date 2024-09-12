@@ -10,15 +10,15 @@
     <div class="col-md-1">
       <img class="w-100" [src]="product.product.imageCover" alt="" />
     </div>
-    <div class="col-md-11 d-flex justify-content-between">
-      <div>
+    <div class="col-md-11 row justify-content-between">
+      <div class="col">
         <h4>{{ product.product.title }}</h4>
         <p class="text-main"></p>
         <button class="btn" (click)="deleteItem(product.product._id)">
           <i class="fa-solid fa-trash-can text-main"></i> Remove
         </button>
       </div>
-      <div>
+      <div class="col-lg-2 d-flex align-items-center justify-content-center">
         <button
           (click)="updateQTY(product.product._id, product.count + 1)"
           class="btn main-border"
@@ -44,9 +44,16 @@
   >
     Place order
   </button>
+  <button class="bg-main text-white btn ms-3" (click)="clearCart()">
+    Clear cart
+  </button>
 </div>
 }@else {
-<h2 class="text-main my-5 text-center">Cart is Empty......</h2>
+<div class="vh-100 d-flex align-items-center justify-content-center">
+  <h2 class="text-main text-center">Cart is Empty......</h2>
+</div>
 } }@else {
-<h2 class="text-main my-5 text-center">Loading......</h2>
+<div class="vh-100 d-flex align-items-center justify-content-center">
+  <h2 class="text-main text-center">Loading......</h2>
+</div>
 }

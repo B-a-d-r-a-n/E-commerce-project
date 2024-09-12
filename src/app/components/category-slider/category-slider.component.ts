@@ -31,6 +31,8 @@ export class CategorySliderComponent implements OnInit {
     pullDrag: false,
     dots: false,
     navSpeed: 700,
+    rtl: true,
+
     autoplay: true,
     autoplayTimeout: 1000,
     autoplayHoverPause: true,

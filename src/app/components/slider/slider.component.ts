@@ -15,6 +15,7 @@ export class SliderComponent {
     touchDrag: true,
     pullDrag: false,
     dots: false,
+    rtl: true,
     navSpeed: 700,
     autoplay: true,
     autoplayTimeout: 1000,

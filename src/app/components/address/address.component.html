@@ -1,29 +1,31 @@
-<div class="container my-5">
-  <h2>Address</h2>
-  <form [formGroup]="address" (ngSubmit)="payment()">
-    <textarea
-      formControlName="details"
-      class="form-control my-3"
-      placeholder="Type your details..."
-      name=""
-      id=""
-    ></textarea>
-    <input
-      formControlName="phone"
-      class="form-control my-3"
-      type="tel"
-      placeholder="Type your phone..."
-      name=""
-      id=""
-    />
-    <input
-      formControlName="city"
-      class="form-control my-3"
-      type="text"
-      placeholder="Type your city..."
-      name=""
-      id=""
-    />
-    <button class="btn bg-main text-white">Pay</button>
-  </form>
+<div class="vh-100 align-items-center d-flex">
+  <div class="container my-5">
+    <h2>Address</h2>
+    <form [formGroup]="address" (ngSubmit)="payment()">
+      <textarea
+        formControlName="details"
+        class="form-control my-3"
+        placeholder="Type your details..."
+        name=""
+        id=""
+      ></textarea>
+      <input
+        formControlName="phone"
+        class="form-control my-3"
+        type="tel"
+        placeholder="Type your phone..."
+        name=""
+        id=""
+      />
+      <input
+        formControlName="city"
+        class="form-control my-3"
+        type="text"
+        placeholder="Type your city..."
+        name=""
+        id=""
+      />
+      <button class="btn bg-main text-white">Pay</button>
+    </form>
+  </div>
 </div>

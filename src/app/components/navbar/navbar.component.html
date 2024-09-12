@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
   <div class="container">
     <a class="navbar-brand" routerLink="/home"
       ><img src="assets/images/freshcart-logo.svg"
@@ -15,15 +15,18 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div
+      class="collapse navbar-collapse justify-content-between"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           <a
             class="nav-link"
             aria-current="page"
             routerLink="/home"
             routerLinkActive="navbar-active bg-main"
-            >Home</a
+            >{{ "navbar.home" | translate }}</a
           >
         </li>
         <li class="nav-item">
@@ -32,7 +35,7 @@
             aria-current="page"
             routerLink="/products"
             routerLinkActive="navbar-active bg-main"
-            >Products</a
+            >{{ "navbar.products" | translate }}</a
           >
         </li>
         <li class="nav-item">
@@ -41,7 +44,7 @@
             aria-current="page"
             routerLink="/categories"
             routerLinkActive="navbar-active bg-main"
-            >Categories</a
+            >{{ "navbar.categories" | translate }}</a
           >
         </li>
 
@@ -51,11 +54,42 @@
             aria-current="page"
             routerLink="/brands"
             routerLinkActive="navbar-active bg-main"
-            >Brands</a
+            >{{ "navbar.brands" | translate }}</a
           >
         </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ "navbar.lang" | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                [class.bg-info]="_TranslateService.currentLang == 'en'"
+                (click)="selectLang('en')"
+                href=""
+                class="dropdown-item"
+                >English</a
+              >
+            </li>
+            <li>
+              <a
+                [class.bg-info]="_TranslateService.currentLang == 'ar'"
+                (click)="selectLang('ar')"
+                href=""
+                class="dropdown-item"
+                >العربية</a
+              >
+            </li>
+          </ul>
+        </li>
       </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           <a
             class="nav-link position-relative"
@@ -63,12 +97,12 @@
             routerLink="/wishlist"
             routerLinkActive="navbar-active bg-main"
           >
-            Wishlist <i class="fa-regular fa-heart"></i>
+            {{ "navbar.wishlist" | translate }}
+            <i class="fa-regular fa-heart"></i>
             <span
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
             >
               9
-              <span class="visually-hidden">unread messages</span>
             </span>
           </a>
         </li>
@@ -83,8 +117,7 @@
             <span
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
             >
-              9
-              <span class="visually-hidden">unread messages</span>
+              {{ counter }}
             </span>
           </a>
         </li>
@@ -94,7 +127,8 @@
             aria-current="page"
             routerLink="/logout"
             routerLinkActive="navbar-active bg-main"
-            >Logout</a
+            (click)="logOut()"
+            >{{ "navbar.logout" | translate }}</a
           >
         </li>
       </ul>

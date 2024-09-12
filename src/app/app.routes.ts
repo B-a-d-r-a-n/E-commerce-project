@@ -15,6 +15,7 @@ import { isLoggedInGuard } from './core/guards/is-logged-in.guard';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { DetailsComponent } from './components/details/details.component';
 import { AddressComponent } from './components/address/address.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 export const routes: Routes = [
   {
@@ -46,10 +47,12 @@ export const routes: Routes = [
       },
       { path: 'brands', component: BrandsComponent, title: 'Brands' },
       { path: 'products', component: ProductsComponent, title: 'Products' },
+      { path: 'wishlist', component: WishlistComponent, title: 'Wishlist' },
       { path: 'cart', component: CartComponent, title: 'Cart' },
       { path: 'orders', component: OrdersComponent, title: 'Orders' },
       { path: 'details/:id', component: DetailsComponent, title: 'Details' },
       { path: 'address/:id', component: AddressComponent, title: 'Shipping' },
+      { path: 'logout', redirectTo: 'home' },
     ],
   },
   { path: '**', component: NotFoundComponent, title: 'NotFound' },

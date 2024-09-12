@@ -3,8 +3,16 @@
 <app-category-slider></app-category-slider>
 
 <div class="container my-5">
+  <input
+    [(ngModel)]="term"
+    type="text"
+    class="form-control w-75 m-auto my-5"
+    placeholder="Search..."
+    name=""
+    id=""
+  />
   <div class="row">
-    @for (product of allProducts; track $index) {
+    @for (product of allProducts|search:term; track $index) {
     <div class="col-md-2">
       <div class="product p-2">
         <div [routerLink]="'/details/' + product._id">
@@ -14,13 +22,22 @@
             {{ product.title.split(" ").slice(0, 3).join(" ") }}...
           </h5>
           <div class="d-flex justify-content-between">
-            <span>{{ product.price }} EGP</span>
+            <span>{{ product.price | currency : "GBP" }} </span>
             <span
               ><i class="fa-solid fa-star rating-color"></i
               >{{ product.ratingsAverage }}
             </span>
           </div>
+          <p>{{ product.createdAt | date : "short" }}</p>
+          <p class="text-danger my-3">{{ product.quantity | soldOut }}</p>
         </div>
+        <button
+          (click)="addToWishlist(product._id)"
+          class="bg-main btn text-white w-100 my-3"
+        >
+          Add to Wishlist
+        </button>
+
         <button
           (click)="addToCart(product._id)"
           class="bg-main btn text-white w-100 my-3"

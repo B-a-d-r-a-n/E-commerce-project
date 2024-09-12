@@ -28,27 +28,25 @@ export class SignupComponent {
   private readonly _AuthService = inject(AuthService);
   private readonly _FormBuilder = inject(FormBuilder);
   private readonly _Router = inject(Router);
-  register = new FormGroup(
-    {
-      name: new FormControl(null, signupValidators.name),
-      email: new FormControl(null, signupValidators.email),
-      password: new FormControl(null, signupValidators.password),
-      rePassword: new FormControl(null, signupValidators.rePassword),
-    },
-    confirmPassword
-  );
-
-  /*  بيبوظ الري باسوورد  */
-
-  // register: FormGroup = this._FormBuilder.group(
+  // register = new FormGroup(
   //   {
-  //     name: [null, signupValidators.name],
-  //     email: [null, signupValidators.email],
-  //     password: [null, signupValidators.password],
-  //     rePassword: [null, signupValidators.rePassword],
+  //     name: new FormControl(null, signupValidators.name),
+  //     email: new FormControl(null, signupValidators.email),
+  //     password: new FormControl(null, signupValidators.password),
+  //     rePassword: new FormControl(null, signupValidators.rePassword),
   //   },
-  //   { Validators: [confirmPassword] }
+  //   confirmPassword
   // );
+
+  register: FormGroup = this._FormBuilder.group(
+    {
+      name: [null, signupValidators.name],
+      email: [null, signupValidators.email],
+      password: [null, signupValidators.password],
+      rePassword: [null, signupValidators.rePassword],
+    },
+    { validators: [confirmPassword] }
+  );
 
   sendData() {
     this.isBtnSubmit = true;

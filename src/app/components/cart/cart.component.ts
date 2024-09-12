@@ -31,6 +31,8 @@ export class CartComponent implements OnInit {
   deleteItem = (productId: string) => {
     this._CartService.removeItem(productId).subscribe({
       next: (res) => {
+        this._CartService.cartCounter.next(res.numOfCartItems);
+
         console.log(res);
         this.cart = res;
         this._toastr.success(`Product removed successfully`, '', {
@@ -57,6 +59,19 @@ export class CartComponent implements OnInit {
       },
     });
   };
+  clearCart() {
+    this._CartService.clearCart().subscribe({
+      next: (res) => {
+        this._CartService.cartCounter.next(0);
+        this._toastr.success(`Cart emptied successfully`, '', {
+          tapToDismiss: true,
+          timeOut: 2000,
+        });
+
+        this.getLoggedUserCart();
+      },
+    });
+  }
   ngOnInit(): void {
     this.getLoggedUserCart();
   }
