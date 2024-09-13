@@ -1,7 +1,7 @@
 <div class="vh-100 align-items-center d-flex">
   <div class="container my-5">
     <h2>Address</h2>
-    <form [formGroup]="address" (ngSubmit)="payment()">
+    <form [formGroup]="address">
       <textarea
         formControlName="details"
         class="form-control my-3"
@@ -25,7 +25,11 @@
         name=""
         id=""
       />
-      <button class="btn bg-main text-white">Pay</button>
+      <button class="btn bg-main text-white" (click)="payment()">Paypal</button>
+      <button class="btn bg-main text-white ms-3" (click)="paymentCash()">
+        Cash
+      </button>
+      <p class="text-main">{{ message }}</p>
     </form>
   </div>
 </div>

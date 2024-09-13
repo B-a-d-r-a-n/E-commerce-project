@@ -13,7 +13,7 @@
   />
   <div class="row">
     @for (product of allProducts|search:term; track $index) {
-    <div class="col-md-2">
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
       <div class="product p-2">
         <div [routerLink]="'/details/' + product._id">
           <img [src]="product.imageCover" class="w-100" alt="" />
@@ -35,6 +35,10 @@
           (click)="addToWishlist(product._id)"
           class="bg-main btn text-white w-100 my-3"
         >
+          <i
+            [class.red-heart]="currentWishlist?.includes(product._id)"
+            class="fa-solid fa-heart"
+          ></i>
           Add to Wishlist
         </button>
 

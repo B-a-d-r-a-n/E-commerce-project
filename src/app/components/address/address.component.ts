@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './address.component.css',
 })
 export class AddressComponent implements OnInit {
+  message!: string;
   cartId!: string;
   private readonly _FormBuilder = inject(FormBuilder);
   private readonly _OrderService = inject(OrderService);
@@ -28,6 +29,15 @@ export class AddressComponent implements OnInit {
         next: (res) => {
           console.log(res);
           window.location.href = res.session.url;
+        },
+      });
+  };
+  paymentCash = () => {
+    this._OrderService
+      .createCashOrder(this.cartId, this.address.value)
+      .subscribe({
+        next: (res) => {
+          this.message = res.status;
         },
       });
   };

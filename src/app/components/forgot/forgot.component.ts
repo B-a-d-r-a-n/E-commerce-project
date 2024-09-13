@@ -20,6 +20,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ForgotComponent implements OnInit {
   errorMessage: string = '';
   isBtnSubmit: boolean = false;
+  data1Sent: boolean = true;
+  data2Sent: boolean = true;
+
   steps: any = 1;
   private readonly _AuthService = inject(AuthService);
   private readonly _FormBuilder = inject(FormBuilder);
@@ -46,7 +49,7 @@ export class ForgotComponent implements OnInit {
           this.steps = 2;
           localStorage.setItem('currentStep', this.steps.toString());
           localStorage.setItem('currentEmail', email);
-
+          this.data1Sent = false;
           this.isBtnSubmit = false;
         },
         error: (err: HttpErrorResponse) => {
@@ -65,7 +68,7 @@ export class ForgotComponent implements OnInit {
         next: (res) => {
           this.steps = 3;
           localStorage.setItem('currentStep', this.steps.toString());
-
+          this.data2Sent = false;
           this.isBtnSubmit = false;
         },
         error: (err: HttpErrorResponse) => {
@@ -94,6 +97,9 @@ export class ForgotComponent implements OnInit {
         },
       });
     }
+  }
+  changeStep(step: Number) {
+    this.steps = step;
   }
   ngOnInit(): void {
     this.steps = localStorage.getItem('currentStep') || 1;

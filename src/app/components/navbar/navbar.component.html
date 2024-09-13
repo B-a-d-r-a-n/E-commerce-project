@@ -98,11 +98,14 @@
             routerLinkActive="navbar-active bg-main"
           >
             {{ "navbar.wishlist" | translate }}
-            <i class="fa-regular fa-heart"></i>
+            <i
+              [class.red-heart]="wishlistCounter > 0"
+              class="fa-solid fa-heart"
+            ></i>
             <span
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
             >
-              9
+              {{ wishlistCounter }}
             </span>
           </a>
         </li>

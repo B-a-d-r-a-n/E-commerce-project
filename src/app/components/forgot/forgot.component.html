@@ -2,6 +2,28 @@
 <section class="vh-100 align-items-center d-flex">
   @if (steps==1) {
   <div class="container my-5 w-75 m-auto">
+    <div class="text-center">
+      <button
+        class="btn bg-main text-white rounded-circle"
+        (click)="changeStep(1)"
+      >
+        1
+      </button>
+      <button
+        [disabled]="data1Sent"
+        class="btn bg-main text-white rounded-circle mx-3"
+        (click)="changeStep(2)"
+      >
+        2
+      </button>
+      <button
+        [disabled]="data2Sent"
+        class="btn bg-main text-white rounded-circle"
+        (click)="changeStep(3)"
+      >
+        3
+      </button>
+    </div>
     <h1 class="my-3">Forgot password:</h1>
     <form [formGroup]="forgotPassword" (ngSubmit)="submitStep1()">
       <input
@@ -29,6 +51,28 @@
   </div>
   }@else if (steps==2) {
   <div class="container my-5 w-75 m-auto">
+    <div class="text-center">
+      <button
+        class="btn bg-main text-white rounded-circle"
+        (click)="changeStep(1)"
+      >
+        1
+      </button>
+      <button
+        [disabled]="data1Sent"
+        class="btn bg-main text-white rounded-circle mx-3"
+        (click)="changeStep(2)"
+      >
+        2
+      </button>
+      <button
+        [disabled]="data2Sent"
+        class="btn bg-main text-white rounded-circle"
+        (click)="changeStep(3)"
+      >
+        3
+      </button>
+    </div>
     <h1 class="my-3">Verify Reset Code:</h1>
     <form [formGroup]="verifyResetCode" (ngSubmit)="submitStep2()">
       <input
@@ -56,6 +100,28 @@
   </div>
   }@else if (steps==3) {
   <div class="container my-5 w-75 m-auto">
+    <div class="text-center">
+      <button
+        class="btn bg-main text-white rounded-circle"
+        (click)="changeStep(1)"
+      >
+        1
+      </button>
+      <button
+        [disabled]="data1Sent"
+        class="btn bg-main text-white rounded-circle mx-3"
+        (click)="changeStep(2)"
+      >
+        2
+      </button>
+      <button
+        [disabled]="data2Sent"
+        class="btn bg-main text-white rounded-circle"
+        (click)="changeStep(3)"
+      >
+        3
+      </button>
+    </div>
     <h1 class="my-3">Reset Password:</h1>
     <form [formGroup]="resetPassword" (ngSubmit)="submitStep3()">
       <input

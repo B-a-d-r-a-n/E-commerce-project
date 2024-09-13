@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { baseUrl } from '../../environment/environment.local';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WishlistService {
   constructor(private _HttpClient: HttpClient) {}
+  wishlistCounter: BehaviorSubject<number> = new BehaviorSubject(0);
   getLoggedUserWishlist = (): Observable<any> => {
     return this._HttpClient.get(baseUrl + 'api/v1/wishlist/');
   };

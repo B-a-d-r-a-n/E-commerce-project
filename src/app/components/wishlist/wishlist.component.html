@@ -1,4 +1,4 @@
-@if (!isLoading) { @if (true) {
+@if (!isLoading) { @if (wishlistCounter>0) {
 <div class="container my-5 bg-main-light p-4 rounded-4">
   <span>Items in wishlist: {{ wishlist.count }}</span>
   <h1>shop wishlist:</h1>
@@ -27,7 +27,9 @@
 </div>
 }@else {
 <div class="vh-100 d-flex align-items-center justify-content-center">
-  <h2 class="text-main text-center">Wishlist is Empty......</h2>
+  <h2 class="text-main text-center">
+    Wishlist is Empty......<i class="fa-solid fa-heart-crack"></i>
+  </h2>
 </div>
 } }@else {
 <div class="vh-100 d-flex align-items-center justify-content-center">

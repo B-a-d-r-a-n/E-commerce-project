@@ -12,16 +12,17 @@ import { CartService } from '../../core/services/cart.service';
   styleUrl: './wishlist.component.css',
 })
 export class WishlistComponent implements OnInit {
+  wishlistCounter: number = 0;
   wishlist!: Wishlist;
   isLoading: boolean = true;
   private readonly _WishlistService = inject(WishlistService);
   private readonly _CartService = inject(CartService);
   private readonly _toastr = inject(ToastrService);
-  getLoggedUserCart = () => {
+  getLoggedUserWishlist = () => {
     this._WishlistService.getLoggedUserWishlist().subscribe({
       next: (res) => {
         console.log(res);
-
+        this.wishlistCounter = res.count;
         this.wishlist = res;
         this.isLoading = false;
       },
@@ -34,8 +35,8 @@ export class WishlistComponent implements OnInit {
   deleteItem = (productId: string) => {
     this._WishlistService.removeItem(productId).subscribe({
       next: (res) => {
-        console.log(res);
-        this.wishlist = res;
+        this._WishlistService.wishlistCounter.next(res.data.length);
+        this.getLoggedUserWishlist();
         this._toastr.success(`Product removed successfully`, '', {
           tapToDismiss: true,
         });
@@ -57,6 +58,6 @@ export class WishlistComponent implements OnInit {
     });
   };
   ngOnInit(): void {
-    this.getLoggedUserCart();
+    this.getLoggedUserWishlist();
   }
 }

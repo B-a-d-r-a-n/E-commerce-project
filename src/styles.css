@@ -65,6 +65,9 @@ a , a:hover{
     border-radius: 8px;
 }
 
+.red-heart{
+  color: #8B0000;
+}
 
 .main-border{
   border: 1px solid var(--main-color)

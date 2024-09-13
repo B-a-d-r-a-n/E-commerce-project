@@ -4,7 +4,7 @@ import { Product } from '../../core/interfaces/products';
 import { AuthService } from '../../core/services/auth.service';
 import { SliderComponent } from '../slider/slider.component';
 import { CategorySliderComponent } from '../category-slider/category-slider.component';
-import { RouterLink } from '@angular/router';
+import { Data, RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import {
@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { WishlistService } from '../../core/services/wishlist.service';
+import { Wishlist } from '../../core/interfaces/wishlist';
 
 @Component({
   selector: 'app-home',
@@ -40,6 +41,7 @@ import { WishlistService } from '../../core/services/wishlist.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   term: string = '';
+  currentWishlist!: string;
   allProducts: Product[] = [];
   cancelSubscription: Subscription = new Subscription();
   constructor(
@@ -79,6 +81,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   addToWishlist = (productId: string) => {
     this._WishlistService.addProductToWishlist(productId).subscribe({
       next: (res) => {
+        this._WishlistService.wishlistCounter.next(res.data.length);
+        this.getLoggedUserWishlist();
         this._toastr.success(`Product added successfully`, '', {
           tapToDismiss: true,
           timeOut: 2000,
@@ -86,8 +90,17 @@ export class HomeComponent implements OnInit, OnDestroy {
       },
     });
   };
-
+  getLoggedUserWishlist = () => {
+    this._WishlistService.getLoggedUserWishlist().subscribe({
+      next: (res: Wishlist) => {
+        res.data.forEach((item) => {
+          this.currentWishlist += item.id;
+        });
+      },
+    });
+  };
   ngOnInit(): void {
+    this.getLoggedUserWishlist();
     this.getProducts();
   }
   ngOnDestroy(): void {

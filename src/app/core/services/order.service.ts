@@ -19,4 +19,12 @@ export class OrderService {
       { shippingAddress }
     );
   };
+  createCashOrder = (
+    cartId: string,
+    shippingAddress: object
+  ): Observable<any> => {
+    return this._HttpClient.post(baseUrl + `api/v1/orders/${cartId}`, {
+      shippingAddress,
+    });
+  };
 }
