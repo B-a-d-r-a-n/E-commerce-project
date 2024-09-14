@@ -1,6 +1,6 @@
 <!-- e3mel steps buttons 1->2->3 -->
 <section class="vh-100 align-items-center d-flex">
-  @if (steps==1) {
+  @if (steps == 1) {
   <div class="container my-5 w-75 m-auto">
     <div class="text-center">
       <button
@@ -10,14 +10,14 @@
         1
       </button>
       <button
-        [disabled]="data1Sent"
+        [disabled]="steps != 2"
         class="btn bg-main text-white rounded-circle mx-3"
         (click)="changeStep(2)"
       >
         2
       </button>
       <button
-        [disabled]="data2Sent"
+        [disabled]="steps != 3"
         class="btn bg-main text-white rounded-circle"
         (click)="changeStep(3)"
       >
@@ -59,14 +59,14 @@
         1
       </button>
       <button
-        [disabled]="data1Sent"
+        [disabled]="steps != 2"
         class="btn bg-main text-white rounded-circle mx-3"
         (click)="changeStep(2)"
       >
         2
       </button>
       <button
-        [disabled]="data2Sent"
+        [disabled]="steps != 3"
         class="btn bg-main text-white rounded-circle"
         (click)="changeStep(3)"
       >
@@ -108,14 +108,14 @@
         1
       </button>
       <button
-        [disabled]="data1Sent"
+        [disabled]="steps != 2"
         class="btn bg-main text-white rounded-circle mx-3"
         (click)="changeStep(2)"
       >
         2
       </button>
       <button
-        [disabled]="data2Sent"
+        [disabled]="steps != 3"
         class="btn bg-main text-white rounded-circle"
         (click)="changeStep(3)"
       >

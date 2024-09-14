@@ -51,10 +51,10 @@ export class ForgotComponent implements OnInit {
           localStorage.setItem('currentEmail', email);
           this.data1Sent = false;
           this.isBtnSubmit = false;
+          this.errorMessage = '';
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
-
           this.errorMessage = err.error.message;
           this.isBtnSubmit = false;
         },
@@ -70,6 +70,7 @@ export class ForgotComponent implements OnInit {
           localStorage.setItem('currentStep', this.steps.toString());
           this.data2Sent = false;
           this.isBtnSubmit = false;
+          this.errorMessage = '';
         },
         error: (err: HttpErrorResponse) => {
           this.errorMessage = err.error.message;
@@ -90,6 +91,7 @@ export class ForgotComponent implements OnInit {
           localStorage.setItem('token', res.token);
           this._AuthService.saveUserData();
           this._Router.navigate(['/home']);
+          this.errorMessage = '';
         },
         error: (err: HttpErrorResponse) => {
           this.errorMessage = err.error.message;
@@ -102,6 +104,7 @@ export class ForgotComponent implements OnInit {
     this.steps = step;
   }
   ngOnInit(): void {
+    this.steps = 1;
     this.steps = localStorage.getItem('currentStep') || 1;
     this.resetPassword
       .get('email')
