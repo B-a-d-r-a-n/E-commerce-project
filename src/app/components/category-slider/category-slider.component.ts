@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CategoriesService } from '../../core/services/categories.service';
 import { Category } from '../../core/interfaces/products';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-category-slider',
   standalone: true,
-  imports: [CarouselModule],
+  imports: [CarouselModule, TranslateModule],
   templateUrl: './category-slider.component.html',
   styleUrl: './category-slider.component.css',
 })

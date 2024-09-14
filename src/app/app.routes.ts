@@ -8,7 +8,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { BrandsComponent } from './components/brands/brands.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
-import { OrdersComponent } from './components/orders/orders.component';
+
 import { SignupComponent } from './components/signup/signup.component';
 import { authGuard } from './core/guards/auth.guard';
 import { isLoggedInGuard } from './core/guards/is-logged-in.guard';
@@ -49,7 +49,7 @@ export const routes: Routes = [
       { path: 'products', component: ProductsComponent, title: 'Products' },
       { path: 'wishlist', component: WishlistComponent, title: 'Wishlist' },
       { path: 'cart', component: CartComponent, title: 'Cart' },
-      { path: 'orders', component: OrdersComponent, title: 'Orders' },
+
       { path: 'details/:id', component: DetailsComponent, title: 'Details' },
       { path: 'address/:id', component: AddressComponent, title: 'Shipping' },
       { path: 'logout', redirectTo: 'home' },

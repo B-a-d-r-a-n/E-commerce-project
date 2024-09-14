@@ -39,14 +39,14 @@
             [class.red-heart]="currentWishlist?.includes(product._id)"
             class="fa-solid fa-heart"
           ></i>
-          Add to Wishlist
+          {{ "home.homeWish" | translate }}
         </button>
 
         <button
           (click)="addToCart(product._id)"
           class="bg-main btn text-white w-100 my-3"
         >
-          Add to Cart
+          {{ "home.homeCart" | translate }}
         </button>
       </div>
     </div>

@@ -20,6 +20,7 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { WishlistService } from '../../core/services/wishlist.service';
 import { Wishlist } from '../../core/interfaces/wishlist';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +36,7 @@ import { Wishlist } from '../../core/interfaces/wishlist';
     SearchPipe,
     FormsModule,
     NgxSpinnerModule,
+    TranslateModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
